@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply antialiased bg-gradient-to-br from-gray-900 to-black;
+  }
+}
+
+@layer components {
+  .glassmorphism {
+    @apply bg-white/10 backdrop-blur-lg border border-white/10 shadow-xl;
+  }
+  
+  .neon-glow {
+    @apply relative;
+    box-shadow: 0 0 20px theme('colors.blue.500/20'),
+                0 0 40px theme('colors.blue.500/20'),
+                0 0 80px theme('colors.blue.500/10');
+  }
+  
+  .neon-text {
+    @apply font-bold;
+    text-shadow: 0 0 10px theme('colors.blue.400/50'),
+                 0 0 20px theme('colors.blue.400/30'),
+                 0 0 30px theme('colors.blue.400/20');
+  }
+  
+  .widget {
+    @apply glassmorphism rounded-xl p-6 transition-all duration-300 hover:neon-glow;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+  }
+  
+  .widget:hover {
+    transform: translateY(-5px) rotateX(2deg) rotateY(2deg);
+  }
+}
+
+.particles canvas {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
